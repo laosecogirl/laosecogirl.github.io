@@ -2,27 +2,24 @@
 <html lang="ko">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>햄버거 - 유흥·밤문화 · 에코걸 문의</title>
+    <title>동남아 햄버거 - 유흥·밤문화 · 에코걸 문의</title>
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- 🌐 [새로 추가된 핵심] 카톡/텔레그램 링크 공유 시 대문 화면 뜨게 하는 코드 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="동남아 햄버거"> <!-- 링크 카드 제목 -->
+    <meta property="og:description" content="남자를 위한 동남아 에코걸 · 유흥 · 밤문화 문의"> <!-- 설명 글 -->
+    <meta property="og:image" content="https://github.io"> <!-- 🌟 공유 시 보여줄 대문 사진 주소 -->
+    <meta property="og:url" content="https://github.io">
+
     <style>
         body { margin: 0; background-color: #050505; display: flex; justify-content: center; font-family: sans-serif; position: relative; color: #ffffff; }
         .page { display: none; width: 100%; max-width: 1920px; padding-bottom: 120px; box-sizing: border-box; }
         .active { display: block; } 
         img { width: 100%; height: auto; display: block; }
         .photo-grid-container { max-width: 768px; margin: 15px auto; padding: 10px; background: rgba(0,0,0,0.6); border: 2px solid #ff007f; box-shadow: 0 0 15px rgba(255,0,127,0.4); border-radius: 12px; box-sizing: border-box; }
-        
-        /* 🎯 [수정 핵심] 큰 사진 없이 가로 2칸, 세로 2칸 균일하게 쪼개는 격자 설정 */
         .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        
-        /* 📸 [수정 핵심] 모든 사진이 일정한 비율을 유지하며 꽉 차도록 정사각형(1:1) 스타일 주입 */
-        .photo-grid img { 
-            width: 100%; 
-            aspect-ratio: 1 / 1; 
-            object-fit: cover; 
-            border-radius: 6px; 
-            transition: opacity 0.5s ease-in-out; 
-        }
-        
+        .photo-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; transition: opacity 0.5s ease-in-out; }
         .ticker-wrap { width: 100%; overflow: hidden; padding: 15px 0; box-sizing: border-box; margin: 15px 0; border-top: 1px solid rgba(255,0,127,0.3); border-bottom: 1px solid rgba(255,0,127,0.3); }
         .ticker { display: flex; white-space: nowrap; animation: ticker-move 20s linear infinite; }
         .ticker-item { color: #ff3399; font-size: 18px; font-weight: bold; padding: 0 35px; text-shadow: 0 0 5px rgba(255,51,153,0.6); }
@@ -97,10 +94,10 @@
     <div id="laos-page" class="page">
         <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div></div></div>
         <div class="photo-grid-container"><div class="photo-grid"><img id="laos-img-1" src=""><img id="laos-img-2" src=""><img id="laos-img-3" src=""><img id="laos-img-4" src=""></div></div>
-        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 패키지 문의</div><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 패키지 문의</div></div></div>
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 문의</div><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 문의</div></div></div>
     </div>
     <div id="philippines-page" class="page">
-        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">마닐라 최고급 유흥 정보</div><div class="ticker-item">세부 에코걸 실시간 매칭</div><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">마닐라 최고급 유흥 정보</div><div class="ticker-item">세부 에코걸 실시간 매칭</div></div></div>
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">최고급 유흥 정보</div><div class="ticker-item">에코걸 실시간 매칭</div><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">최고급 유흥 정보</div><div class="ticker-item">에코걸 실시간 매칭</div></div></div>
         <div class="photo-grid-container"><div class="photo-grid"><img id="phil-img-1" src=""><img id="phil-img-2" src=""><img id="phil-img-3" src=""><img id="phil-img-4" src=""></div></div>
         <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">럭셔리 독채 풀빌라 대여</div><div class="ticker-item">24시간 안전 보장 친절 상담</div><div class="ticker-item">럭셔리 독채 풀빌라 대여</div><div class="ticker-item">24시간 안전 보장 친절 상담</div></div></div>
     </div>
