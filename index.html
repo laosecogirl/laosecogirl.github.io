@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>햄버거 - 유흥·밤문화 · 에코걸 문의</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        body { margin: 0; background-color: #050505; display: flex; justify-content: center; font-family: sans-serif; position: relative; color: #ffffff; }
+        .page { display: none; width: 100%; max-width: 1920px; padding-bottom: 120px; box-sizing: border-box; }
+        .active { display: block; } 
+        img { width: 100%; height: auto; display: block; }
+        .photo-grid-container { max-width: 768px; margin: 15px auto; padding: 10px; background: rgba(0,0,0,0.6); border: 2px solid #ff007f; box-shadow: 0 0 15px rgba(255,0,127,0.4); border-radius: 12px; box-sizing: border-box; }
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .photo-grid img:nth-child(1) { grid-column: span 2; }
+        .photo-grid img { border-radius: 6px; transition: opacity 0.5s ease-in-out; }
+        .ticker-wrap { width: 100%; overflow: hidden; padding: 15px 0; box-sizing: border-box; margin: 15px 0; border-top: 1px solid rgba(255,0,127,0.3); border-bottom: 1px solid rgba(255,0,127,0.3); }
+        .ticker { display: flex; white-space: nowrap; animation: ticker-move 20s linear infinite; }
+        .ticker-item { color: #ff3399; font-size: 18px; font-weight: bold; padding: 0 35px; text-shadow: 0 0 5px rgba(255,51,153,0.6); }
+        @keyframes ticker-move { 0% { transform: translate3d(100vw, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        .btn-bar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; width: 92%; max-width: 600px; justify-content: center; }
+        .floating-btn { height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; background-color: rgba(5,5,5,0.85); border: 2px solid #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.6), inset 0 0 5px rgba(255,0,127,0.3); cursor: pointer; text-decoration: none; font-weight: bold; font-size: 15px; color: #ffffff; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; text-align: center; }
+        .laos-btn { flex: 2; } .home-btn { flex: 1; } .phil-btn { flex: 2; }
+        .floating-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(255,0,127,0.9); }
+        @media (max-width: 768px) {
+            .page { max-width: 768px; padding-bottom: 100px; }
+            .ticker-item { font-size: 16px !important; padding: 0 20px !important; }
+            .btn-bar { bottom: 15px; gap: 8px; width: 94%; }
+            .floating-btn { height: 46px; font-size: 13px; border-radius: 10px; }
+            @keyframes ticker-move { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        }
+    </style>
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0); 
+            if (pageId === 'laos-page') { updateRandomImages('laos'); }
+            else if (pageId === 'philippines-page') { updateRandomImages('phil'); }
+        }
+        function goHome() { if (window.innerWidth <= 768) { showPage('main-mobile'); } else { showPage('main-pc'); } }
+        const totalPhotos = 20;
+        function getPerfectRandomSequence() {
+            let numbers = [];
+            for (let i = 1; i <= totalPhotos; i++) { numbers.push(i < 10 ? '0' + i : '' + i); }
+            for (let i = numbers.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+            }
+            return numbers;
+        }
+        function updateRandomImages(prefix) {
+            const randomList = getPerfectRandomSequence();
+            for (let i = 0; i < 4; i++) {
+                const imgTag = document.getElementById(prefix + '-img-' + (i+1));
+                if (imgTag) {
+                    imgTag.style.opacity = 0;
+                    imgTag.src = 'photo_' + randomList[i] + '.png';
+                    imgTag.style.opacity = 1;
+                }
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            updateRandomImages('laos');
+            updateRandomImages('phil');
+            setInterval(() => {
+                const activePage = document.querySelector('.page.active');
+                if (activePage && activePage.id === 'laos-page') { updateRandomImages('laos'); }
+                else if (activePage && activePage.id === 'philippines-page') { updateRandomImages('phil'); }
+            }, 5000);
+            if (window.innerWidth <= 768) { showPage('main-mobile'); } else { showPage('main-pc'); }
+        });
+    </script>
+</head>
+<body>
+    <div id="main-pc" class="page">
+        <img src="pc_banner.png" usemap="#pc-map">
+        <map name="pc-map">
+            <area shape="rect" coords="0,0,960,1080" href="javascript:showPage('laos-page')">
+            <area shape="rect" coords="961,0,1920,1080" href="javascript:showPage('philippines-page')">
+        </map>
+    </div>
+    <div id="main-mobile" class="page">
+        <img src="mobile_banner.png" usemap="#mobile-map">
+        <map name="mobile-map">
+            <area shape="rect" coords="0,0,540,1024" href="javascript:showPage('laos-page')">
+            <area shape="rect" coords="541,0,1080,1024" href="javascript:showPage('philippines-page')">
+        </map>
+    </div>
+    <div id="laos-page" class="page">
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div></div></div>
+        <div class="photo-grid-container"><div class="photo-grid"><img id="laos-img-1" src=""><img id="laos-img-2" src=""><img id="laos-img-3" src=""><img id="laos-img-4" src=""></div></div>
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 문의</div><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 문의</div></div></div>
+    </div>
+    <div id="philippines-page" class="page">
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">최고급 유흥 정보</div><div class="ticker-item">에코걸 실시간 매칭</div><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">최고급 유흥 정보</div><div class="ticker-item">에코걸 실시간 매칭</div></div></div>
+        <div class="photo-grid-container"><div class="photo-grid"><img id="phil-img-1" src=""><img id="phil-img-2" src=""><img id="phil-img-3" src=""><img id="phil-img-4" src=""></div></div>
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">럭셔리 독채 풀빌라 대여</div><div class="ticker-item">24시간 안전 보장 친절 상담</div><div class="ticker-item">럭셔리 독채 풀빌라 대여</div><div class="ticker-item">24시간 안전 보장 친절 상담</div></div></div>
+    </div>
+    <div class="btn-bar">
+        <a href="https://t.me" class="floating-btn laos-btn" target="_blank">라오스 문의</a>
+        <div onclick="goHome()" class="floating-btn home-btn">홈</div>
+        <a href="https://t.me" class="floating-btn phil-btn" target="_blank">필리핀 문의</a>
+    </div>
+</body>
+</html>
+
