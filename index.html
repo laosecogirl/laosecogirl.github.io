@@ -2,14 +2,13 @@
 <html lang="ko">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동남아 햄버거 - 유흥·밤문화 · 에코걸 문의</title>
+    <title>햄버거 - 유흥·밤문화 · 에코걸 문의</title>
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- 🌐 [새로 추가된 핵심] 카톡/텔레그램 링크 공유 시 대문 화면 뜨게 하는 코드 -->
+    
     <meta property="og:type" content="website">
-    <meta property="og:title" content="동남아 햄버거"> <!-- 링크 카드 제목 -->
-    <meta property="og:description" content="남자를 위한 동남아 에코걸 · 유흥 · 밤문화 문의"> <!-- 설명 글 -->
-    <meta property="og:image" content="https://github.io"> <!-- 🌟 공유 시 보여줄 대문 사진 주소 -->
+    <meta property="og:title" content="동남아 햄버거">
+    <meta property="og:description" content="남자를 위한 동남아 에코걸 · 유흥 · 밤문화 문의">
+    <meta property="og:image" content="https://github.io">
     <meta property="og:url" content="https://github.io">
 
     <style>
@@ -64,6 +63,29 @@
                 }
             }
         }
+
+        // 📱 [새로 추가된 핵심 버그 대책] 모바일 화면 크기에 맞춰 터치 좌표 비율을 실시간 조절해 주는 시스템
+        function resizeImageMaps() {
+            const maps = document.querySelectorAll('map');
+            maps.forEach(map => {
+                const img = document.querySelector(`img[usemap="#${map.name}"]`);
+                if (img && img.complete) {
+                    const areas = map.querySelectorAll('area');
+                    const wPercent = img.clientWidth / 1080; // 모바일 기본 가로 폭 기준 비율 계산
+                    const hPercent = img.clientHeight / 1024; // 모바일 기본 세로 폭 기준 비율 계산
+                    
+                    areas.forEach(area => {
+                        if (!area.dataset.originalCoords) {
+                            area.dataset.originalCoords = area.coords;
+                        }
+                        const coords = area.dataset.originalCoords.split(',');
+                        const newCoords = coords.map((c, i) => i % 2 === 0 ? Math.round(c * wPercent) : Math.round(c * hPercent));
+                        area.coords = newCoords.join(',');
+                    });
+                }
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             updateRandomImages('laos');
             updateRandomImages('phil');
@@ -72,7 +94,20 @@
                 if (activePage && activePage.id === 'laos-page') { updateRandomImages('laos'); }
                 else if (activePage && activePage.id === 'philippines-page') { updateRandomImages('phil'); }
             }, 5000);
-            if (window.innerWidth <= 768) { showPage('main-mobile'); } else { showPage('main-pc'); }
+
+            if (window.innerWidth <= 768) {
+                showPage('main-mobile');
+            } else {
+                showPage('main-pc');
+            }
+
+            // 이미지 로딩 완료 및 화면 크기 바뀔 때마다 좌표 리사이징 센서 가동
+            window.addEventListener('resize', resizeImageMaps);
+            const mobileImg = document.querySelector('#main-mobile img');
+            if (mobileImg) {
+                mobileImg.addEventListener('load', resizeImageMaps);
+                if (mobileImg.complete) resizeImageMaps();
+            }
         });
     </script>
 </head>
@@ -85,8 +120,10 @@
         </map>
     </div>
     <div id="main-mobile" class="page">
-        <img src="mobile_banner.png" usemap="#mobile-map">
+        <!-- 💡 리사이징 센서 추적을 위한 ID 태그 심어둠 -->
+        <img src="mobile_banner.png" id="mobile-banner-img" usemap="#mobile-map">
         <map name="mobile-map">
+            <!-- 🌟 [터치 고정 완료] 모바일 가로 1080 해상도 기준으로 정확히 좌측 절반 / 우측 절반 분할 매칭 -->
             <area shape="rect" coords="0,0,540,1024" href="javascript:showPage('laos-page')">
             <area shape="rect" coords="541,0,1080,1024" href="javascript:showPage('philippines-page')">
         </map>
@@ -94,10 +131,10 @@
     <div id="laos-page" class="page">
         <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div></div></div>
         <div class="photo-grid-container"><div class="photo-grid"><img id="laos-img-1" src=""><img id="laos-img-2" src=""><img id="laos-img-3" src=""><img id="laos-img-4" src=""></div></div>
-        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 문의</div><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 문의</div></div></div>
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 패키지 문의</div><div class="ticker-item">독채 풀빌라 완비</div><div class="ticker-item">황제투어 실시간 패키지 문의</div></div></div>
     </div>
     <div id="philippines-page" class="page">
-        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">최고급 유흥 정보</div><div class="ticker-item">에코걸 실시간 매칭</div><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">최고급 유흥 정보</div><div class="ticker-item">에코걸 실시간 매칭</div></div></div>
+        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">마닐라 최고급 유흥 정보</div><div class="ticker-item">세부 에코걸 실시간 매칭</div><div class="ticker-item">★ 필리핀 황제 케어 VIP ★</div><div class="ticker-item">마닐라 최고급 유흥 정보</div><div class="ticker-item">세부 에코걸 실시간 매칭</div></div></div>
         <div class="photo-grid-container"><div class="photo-grid"><img id="phil-img-1" src=""><img id="phil-img-2" src=""><img id="phil-img-3" src=""><img id="phil-img-4" src=""></div></div>
         <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">럭셔리 독채 풀빌라 대여</div><div class="ticker-item">24시간 안전 보장 친절 상담</div><div class="ticker-item">럭셔리 독채 풀빌라 대여</div><div class="ticker-item">24시간 안전 보장 친절 상담</div></div></div>
     </div>
