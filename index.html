@@ -6,17 +6,18 @@
     <title>햄버거 - 유흥·밤문화 · 에코걸 문의</title>
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <!-- 🔍 [추가] 구글 검색창 설명문 (핵심 키워드를 조합하여 자연스러운 문장으로 구성) -->
+    <!-- 🔍 구글 검색창 설명문 및 키워드 최적화 -->
     <meta name="description" content="남자를 위한 동남아 햄버거 공식 홈페이지. 라오스, 필리핀 황제 투어 및 인기 유흥, 24시 밀착 에코걸 서비스, 가라오케 예약 및 밤문화 상세 문의 안내.">
-    
-    <!-- 🔍 [추가] 구글 로봇 수집용 핵심 검색어 태그 -->
     <meta name="keywords" content="동남아 햄버거, 에코걸, 동남아 유흥, 동남아 밤문화, 라오스 에코걸, 필리핀 에코걸, 황제투어, 가라오케 문의, laosecogirl">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="동남아 햄버거">
     <meta property="og:description" content="남자를 위한 동남아 에코걸 · 유흥 · 밤문화 문의">
-    <meta property="og:image" content="https://github.io"> <!-- 🔗 정확한 경로 지정 -->
-    <meta property="og:url" content="https://laosecogirl.github.io/"> <!-- 🔗 깃허브 주소 반영 -->
+    <meta property="og:image" content="https://github.io">
+    <meta property="og:url" content="https://laosecogirl.github.io/">
+
+    <!-- ✈️ 텔레그램 아이콘을 쓰기 위한 외부 폰트 라이브러리 추가 -->
+    <link rel="stylesheet" href="https://cloudflare.com">
 
     <style>
         body { margin: 0; background-color: #050505; display: flex; justify-content: center; font-family: sans-serif; position: relative; color: #ffffff; }
@@ -30,15 +31,22 @@
         .ticker { display: flex; white-space: nowrap; animation: ticker-move 20s linear infinite; }
         .ticker-item { color: #ff3399; font-size: 18px; font-weight: bold; padding: 0 35px; text-shadow: 0 0 5px rgba(255,51,153,0.6); }
         @keyframes ticker-move { 0% { transform: translate3d(100vw, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        
+        /* 🌟 텔레그램 스타일 플로팅 바 디자인 조정 */
         .btn-bar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; width: 92%; max-width: 600px; justify-content: center; }
-        .floating-btn { height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; background-color: rgba(5,5,5,0.85); border: 2px solid #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.6), inset 0 0 5px rgba(255,0,127,0.3); cursor: pointer; text-decoration: none; font-weight: bold; font-size: 15px; color: #ffffff; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; text-align: center; }
-        .laos-btn { flex: 2; } .home-btn { flex: 1; } .phil-btn { flex: 2; }
-        .floating-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(255,0,127,0.9); }
+        .floating-btn { height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; background-color: rgba(5,5,5,0.85); border: 2px solid #0088cc; box-shadow: 0 0 10px rgba(0,136,204,0.6), inset 0 0 5px rgba(0,136,204,0.3); cursor: pointer; text-decoration: none; font-weight: bold; font-size: 15px; color: #ffffff; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; text-align: center; }
+        .laos-btn { flex: 2; } .home-btn { flex: 1; border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.6); } .phil-btn { flex: 2; }
+        .floating-btn i { margin-right: 6px; font-size: 16px; color: #0088cc; }
+        .home-btn i { color: #ff007f; }
+        .floating-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(0,136,204,0.9); }
+        .home-btn:hover { box-shadow: 0 0 18px rgba(255,0,127,0.9); }
+        
         @media (max-width: 768px) {
             .page { max-width: 768px; padding-bottom: 100px; }
             .ticker-item { font-size: 16px !important; padding: 0 20px !important; }
             .btn-bar { bottom: 15px; gap: 8px; width: 94%; }
             .floating-btn { height: 46px; font-size: 13px; border-radius: 10px; }
+            .floating-btn i { font-size: 14px; margin-right: 4px; }
             @keyframes ticker-move { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         }
     </style>
@@ -65,12 +73,9 @@
             const randomList = getPerfectRandomSequence();
             for (let i = 0; i < 4; i++) {
                 const imgTag = document.getElementById(prefix + '-img-' + (i+1));
-                if (imgTag) {
-                    imgTag.src = 'photo_' + randomList[i] + '.png';
-                }
+                if (imgTag) { imgTag.src = 'photo_' + randomList[i] + '.png'; }
             }
         }
-
         function resizeImageMaps() {
             const maps = document.querySelectorAll('map');
             maps.forEach(map => {
@@ -79,11 +84,8 @@
                     const areas = map.querySelectorAll('area');
                     const wPercent = img.clientWidth / 1080; 
                     const hPercent = img.clientHeight / 1024; 
-                    
                     areas.forEach(area => {
-                        if (!area.dataset.originalCoords) {
-                            area.dataset.originalCoords = area.coords;
-                        }
+                        if (!area.dataset.originalCoords) { area.dataset.originalCoords = area.coords; }
                         const coords = area.dataset.originalCoords.split(',');
                         const newCoords = coords.map((c, i) => i % 2 === 0 ? Math.round(c * wPercent) : Math.round(c * hPercent));
                         area.coords = newCoords.join(',');
@@ -91,22 +93,14 @@
                 }
             });
         }
-
         document.addEventListener("DOMContentLoaded", function() {
-            updateRandomImages('laos');
-            updateRandomImages('phil');
+            updateRandomImages('laos'); updateRandomImages('phil');
             setInterval(() => {
                 const activePage = document.querySelector('.page.active');
                 if (activePage && activePage.id === 'laos-page') { updateRandomImages('laos'); }
                 else if (activePage && activePage.id === 'philippines-page') { updateRandomImages('phil'); }
             }, 5000);
-
-            if (window.innerWidth <= 768) {
-                showPage('main-mobile');
-            } else {
-                showPage('main-pc');
-            }
-
+            if (window.innerWidth <= 768) { showPage('main-mobile'); } else { showPage('main-pc'); }
             window.addEventListener('resize', resizeImageMaps);
             const mobileImg = document.querySelector('#main-mobile img');
             if (mobileImg) {
@@ -117,6 +111,7 @@
     </script>
 </head>
 <body>
+    <!-- 1. PC 메인 화면 -->
     <div id="main-pc" class="page">
         <img src="pc_banner.png" usemap="#pc-map">
         <map name="pc-map">
@@ -124,6 +119,8 @@
             <area shape="rect" coords="961,0,1920,1080" href="javascript:showPage('philippines-page')">
         </map>
     </div>
+
+    <!-- 2. 모바일 메인 화면 -->
     <div id="main-mobile" class="page">
         <img src="mobile_banner.png" id="mobile-banner-img" usemap="#mobile-map">
         <map name="mobile-map">
@@ -131,9 +128,62 @@
             <area shape="rect" coords="541,0,1080,1024" href="javascript:showPage('philippines-page')">
         </map>
     </div>
+
+    <!-- 3. 라오스 서브 페이지 -->
     <div id="laos-page" class="page">
-        <div class="ticker-wrap"><div class="ticker"><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div><div class="ticker-item">★ 라오스 인기 밤문화 ★</div><div class="ticker-item">가라오케 최다 보유</div><div class="ticker-item">에코걸 24시 밀착 케어</div></div></div>
-        <div class="photo-grid-container"><div class="photo-grid"><img id="laos-img-1" src=""><img id="laos-img-2" src=""><img id="laos-img-3" src=""><img id="laos-img-4" src=""></div></div>
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <div class="ticker-item">★ 라오스 인기 밤문화 ★</div>
+                <div class="ticker-item">가라오케 최다 보유</div>
+                <div class="ticker-item">에코걸 24시 밀착 케어</div>
+                <div class="ticker-item">★ 라오스 인기 밤문화 ★</div>
+                <div class="ticker-item">가라오케 최다 보유</div>
+                <div class="ticker-item">에코걸 24시 밀착 케어</div>
+            </div>
+        </div>
+        <div class="photo-grid-container">
+            <div class="photo-grid">
+                <img id="laos-img-1" src=""><img id="laos-img-2" src=""><img id="laos-img-3" src=""><img id="laos-img-4" src="">
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 필리핀 서브 페이지 -->
+    <div id="philippines-page" class="page">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <div class="ticker-item">★ 필리핀 황제 밤문화 ★</div>
+                <div class="ticker-item">JTV/KTV 최상의 초이스</div>
+                <div class="ticker-item">밀착 케어 단독 가이드</div>
+                <div class="ticker-item">★ 필리핀 황제 밤문화 ★</div>
+                <div class="ticker-item">JTV/KTV 최상의 초이스</div>
+                <div class="ticker-item">밀착 케어 단독 가이드</div>
+            </div>
+        </div>
+        <div class="photo-grid-container">
+            <div class="photo-grid">
+                <img id="phil-img-1" src=""><img id="phil-img-2" src=""><img id="phil-img-3" src=""><img id="phil-img-4" src="">
+            </div>
+        </div>
+    </div>
+
+    <!-- ✈️ 하단 고정 텔레그램 연동형 플로팅 메뉴 바 -->
+    <!-- target="_blank" 속성으로 내 홈페이지 창은 유지되면서 텔레그램 어플이 바로 팝업됩니다. -->
+    <div class="btn-bar">
+        <!-- 💡 href="여기에_라오스_텔레그램방_주소_입력" -->
+        <a href="https://t.me" target="_blank" class="floating-btn laos-btn">
+            <i class="fab fa-telegram"></i> 라오스 문의
+        </a>
+        
+        <!-- 홈 버튼은 기존 홈 스크립트로 동작하도록 세팅 -->
+        <a href="javascript:goHome()" class="floating-btn home-btn">
+            <i class="fas fa-home"></i> HOME
+        </a>
+        
+        <!-- 💡 href="여기에_필리핀_텔레그램방_주소_입력" -->
+        <a href="https://t.me" target="_blank" class="floating-btn phil-btn">
+            <i class="fab fa-telegram"></i> 필리핀 문의
+        </a>
     </div>
 </body>
 </html>
