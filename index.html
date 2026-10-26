@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +14,6 @@
     <meta property="og:image" content="https://github.io">
     <meta property="og:url" content="https://laosecogirl.github.io/">
 
-    <!-- ✈️ 텔레그램 아이콘을 쓰기 위한 외부 폰트 라이브러리 추가 -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-
     <style>
         body { margin: 0; background-color: #050505; display: flex; justify-content: center; font-family: sans-serif; position: relative; color: #ffffff; }
         .page { display: none; width: 100%; max-width: 1920px; padding-bottom: 120px; box-sizing: border-box; }
@@ -32,12 +27,14 @@
         .ticker-item { color: #ff3399; font-size: 18px; font-weight: bold; padding: 0 35px; text-shadow: 0 0 5px rgba(255,51,153,0.6); }
         @keyframes ticker-move { 0% { transform: translate3d(100vw, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         
-        /* 🌟 텔레그램 스타일 플로팅 바 디자인 조정 */
+        /* 🌟 플로팅 바 레이아웃 유지 및 조절 */
         .btn-bar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; width: 92%; max-width: 600px; justify-content: center; }
         .floating-btn { height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; background-color: rgba(5,5,5,0.85); border: 2px solid #0088cc; box-shadow: 0 0 10px rgba(0,136,204,0.6), inset 0 0 5px rgba(0,136,204,0.3); cursor: pointer; text-decoration: none; font-weight: bold; font-size: 15px; color: #ffffff; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; text-align: center; }
         .laos-btn { flex: 2; } .home-btn { flex: 1; border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.6); } .phil-btn { flex: 2; }
-        .floating-btn i { margin-right: 6px; font-size: 16px; color: #0088cc; }
-        .home-btn i { color: #ff007f; }
+        
+        /* 아이콘으로 사용할 이모티콘 간격 부여 */
+        .icon-space { margin-right: 6px; font-size: 16px; display: inline-block; vertical-align: middle; }
+        
         .floating-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(0,136,204,0.9); }
         .home-btn:hover { box-shadow: 0 0 18px rgba(255,0,127,0.9); }
         
@@ -46,7 +43,7 @@
             .ticker-item { font-size: 16px !important; padding: 0 20px !important; }
             .btn-bar { bottom: 15px; gap: 8px; width: 94%; }
             .floating-btn { height: 46px; font-size: 13px; border-radius: 10px; }
-            .floating-btn i { font-size: 14px; margin-right: 4px; }
+            .icon-space { font-size: 14px; margin-right: 4px; }
             @keyframes ticker-move { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         }
     </style>
@@ -167,22 +164,20 @@
         </div>
     </div>
 
-    <!-- ✈️ 하단 고정 텔레그램 연동형 플로팅 메뉴 바 -->
-    <!-- target="_blank" 속성으로 내 홈페이지 창은 유지되면서 텔레그램 어플이 바로 팝업됩니다. -->
+    <!-- ✈️ 하단 고정형 텔레그램 연동 플로팅 메뉴 바 (이모티콘 고정 방식) -->
     <div class="btn-bar">
-        <!-- 💡 href="여기에_라오스_텔레그램방_주소_입력" -->
+        <!-- 💡 href="여기에 라오스 그룹방 주소" -->
         <a href="https://t.me/laosecogirl/5" target="_blank" class="floating-btn laos-btn">
-            <i class="fab fa-telegram"></i> 라오스 문의
+            <span class="icon-space">✈️</span>라오스 문의
         </a>
         
-        <!-- 홈 버튼은 기존 홈 스크립트로 동작하도록 세팅 -->
         <a href="javascript:goHome()" class="floating-btn home-btn">
-            <i class="fas fa-home"></i> HOME
+            <span class="icon-space">🏠</span>HOME
         </a>
         
-        <!-- 💡 href="여기에_필리핀_텔레그램방_주소_입력" -->
+        <!-- 💡 href="여기에 필리핀 그룹방 주소" -->
         <a href="https://t.me/laosecogirl/3" target="_blank" class="floating-btn phil-btn">
-            <i class="fab fa-telegram"></i> 필리핀 문의
+            <span class="icon-space">✈️</span>필리핀 문의
         </a>
     </div>
 </body>
