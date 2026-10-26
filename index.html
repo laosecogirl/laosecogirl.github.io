@@ -27,14 +27,14 @@
         .ticker-item { color: #ff3399; font-size: 18px; font-weight: bold; padding: 0 35px; text-shadow: 0 0 5px rgba(255,51,153,0.6); }
         @keyframes ticker-move { 0% { transform: translate3d(100vw, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         
-        /* 플로팅 바 스타일 */
+        /* 플로팅 바 레이아웃 스타일 */
         .btn-bar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; width: 92%; max-width: 600px; justify-content: center; }
         .floating-btn { height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; background-color: rgba(5,5,5,0.85); border: 2px solid #0088cc; box-shadow: 0 0 10px rgba(0,136,204,0.6), inset 0 0 5px rgba(0,136,204,0.3); cursor: pointer; text-decoration: none; font-weight: bold; font-size: 15px; color: #ffffff; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; text-align: center; }
         .laos-btn { flex: 2; } .home-btn { flex: 1; border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.6); } .phil-btn { flex: 2; }
         
-        /* 🌟 내부 코드 삽입형 아이콘 전용 정렬 세팅 */
-        .tg-inline-icon { width: 18px; height: 18px; margin-right: 6px; display: inline-block; vertical-align: middle; }
-        .tg-inline-icon svg { width: 100%; height: 100%; fill: #ffffff; } /* 종이비행기 색상을 흰색으로 고정 */
+        /* 🌟 순수 텔레그램 선형 비행기 아이콘 전용 조절 스타일 */
+        .tg-inline-icon { width: 20px; height: 20px; margin-right: 8px; display: inline-block; vertical-align: middle; }
+        .tg-inline-icon svg { width: 100%; height: 100%; fill: none; stroke: #ffffff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .icon-text { display: inline-block; vertical-align: middle; }
         
         .floating-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(0,136,204,0.9); }
@@ -45,7 +45,7 @@
             .ticker-item { font-size: 16px !important; padding: 0 20px !important; }
             .btn-bar { bottom: 15px; gap: 8px; width: 94%; }
             .floating-btn { height: 46px; font-size: 13px; border-radius: 10px; }
-            .tg-inline-icon { width: 15px; height: 15px; margin-right: 4px; }
+            .tg-inline-icon { width: 16px; height: 16px; margin-right: 5px; }
             @keyframes ticker-move { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         }
     </style>
@@ -166,17 +166,16 @@
         </div>
     </div>
 
-    <!-- ✈️ 하단 고정형 플로팅 메뉴 바 (임베디드 그래픽 아이콘 100% 무조건 노출 버전) -->
+    <!-- ✈️ 하단 고정형 플로팅 메뉴 바 (오리지널 텔레그램 비행기 마크 일체화 버전) -->
     <div class="btn-bar">
         <!-- 💡 href="여기에 실제 라오스 그룹방 주소 입력" -->
         <a href="https://t.me/laosecogirl/5" target="_blank" class="floating-btn laos-btn">
             <span class="tg-inline-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.15-.31.33-.53.53l-6.53 5.92c-.22.2-.55.23-.8.06l-2.22-1.49c-.44-.3-.39-1 .1-.19l9.31-6.19c.35-.23.75.17.67.36z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M21.5 2L2 11.5l6.83 2.53L19 5.5l-8.5 9.5.03 4.5 3.65-3.33L18.5 19.5z"/></svg>
             </span>
             <span class="icon-text">라오스 문의</span>
         </a>
         
-        <!-- 홈 버튼 아이콘 제외 완료 -->
         <a href="javascript:goHome()" class="floating-btn home-btn">
             <span class="icon-text">HOME</span>
         </a>
@@ -184,7 +183,7 @@
         <!-- 💡 href="여기에 실제 필리핀 그룹방 주소 입력" -->
         <a href="https://t.me/laosecogirl/3" target="_blank" class="floating-btn phil-btn">
             <span class="tg-inline-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.15-.31.33-.53.53l-6.53 5.92c-.22.2-.55.23-.8.06l-2.22-1.49c-.44-.3-.39-1 .1-.19l9.31-6.19c.35-.23.75.17.67.36z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M21.5 2L2 11.5l6.83 2.53L19 5.5l-8.5 9.5.03 4.5 3.65-3.33L18.5 19.5z"/></svg>
             </span>
             <span class="icon-text">필리핀 문의</span>
         </a>
