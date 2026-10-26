@@ -12,7 +12,7 @@
     <meta property="og:title" content="동남아 햄버거">
     <meta property="og:description" content="남자를 위한 동남아 에코걸 · 유흥 · 밤문화 문의">
     <meta property="og:image" content="https://github.io">
-    <meta property="og:url" content="https://laosecogirl.github.io/">
+    <meta property="og:url" content="https://github.io">
 
     <style>
         body { margin: 0; background-color: #050505; display: flex; justify-content: center; font-family: sans-serif; position: relative; color: #ffffff; }
@@ -27,13 +27,13 @@
         .ticker-item { color: #ff3399; font-size: 18px; font-weight: bold; padding: 0 35px; text-shadow: 0 0 5px rgba(255,51,153,0.6); }
         @keyframes ticker-move { 0% { transform: translate3d(100vw, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         
-        /* 🌟 플로팅 바 레이아웃 및 네온 조절 */
+        /* 플로팅 바 스타일 유지 */
         .btn-bar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; width: 92%; max-width: 600px; justify-content: center; }
         .floating-btn { height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; background-color: rgba(5,5,5,0.85); border: 2px solid #0088cc; box-shadow: 0 0 10px rgba(0,136,204,0.6), inset 0 0 5px rgba(0,136,204,0.3); cursor: pointer; text-decoration: none; font-weight: bold; font-size: 15px; color: #ffffff; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; text-align: center; }
         .laos-btn { flex: 2; } .home-btn { flex: 1; border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.6); } .phil-btn { flex: 2; }
         
-        /* 🌟 버튼 내 커스텀 이미지 아이콘 전용 스타일 지정 */
-        .btn-icon { width: 18px; height: 18px; margin-right: 8px; object-fit: contain; display: inline-block; vertical-align: middle; }
+        /* 🌟 아이콘 정렬 최적화 (흰색 종이비행기 전용 크기 세팅) --> */
+        .btn-icon { width: 20px; height: 20px; margin-right: 6px; display: inline-block; vertical-align: middle; filter: brightness(1); }
         .icon-text { display: inline-block; vertical-align: middle; }
         
         .floating-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(0,136,204,0.9); }
@@ -44,7 +44,7 @@
             .ticker-item { font-size: 16px !important; padding: 0 20px !important; }
             .btn-bar { bottom: 15px; gap: 8px; width: 94%; }
             .floating-btn { height: 46px; font-size: 13px; border-radius: 10px; }
-            .btn-icon { width: 15px; height: 15px; margin-right: 5px; }
+            .btn-icon { width: 16px; height: 16px; margin-right: 4px; }
             @keyframes ticker-move { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         }
     </style>
@@ -165,22 +165,22 @@
         </div>
     </div>
 
-    <!-- ✈️ 하단 고정형 텔레그램 연동 플로팅 메뉴 바 (보유하신 고화질 이미지 적용 버전) -->
+    <!-- ✈️ 하단 고정형 플로팅 메뉴 바 (흰색 텔레그램 공식 라인 아이콘 일체화 버전) -->
     <div class="btn-bar">
-        <!-- 💡 href="여기에 라오스 그룹방 주소" -->
+        <!-- 💡 href="여기에 실제 라오스 그룹방 주소 입력" -->
         <a href="https://t.me/laosecogirl/5" target="_blank" class="floating-btn laos-btn">
-            <img src="telegram_icon.png" class="btn-icon" alt="텔레그램"><span class="icon-text">라오스 문의</span>
+            <img src="https://wikimedia.org" class="btn-icon" alt="Telegram"><span class="icon-text">라오스 문의</span>
         </a>
         
+        <!-- 💡 홈 버튼 아이콘 완전 삭제 및 텍스트 독립 구성 -->
         <a href="javascript:goHome()" class="floating-btn home-btn">
-            <span class="icon-text">🏠 HOME</span>
+            <span class="icon-text">HOME</span>
         </a>
         
-        <!-- 💡 href="여기에 필리핀 그룹방 주소" -->
+        <!-- 💡 href="여기에 실제 필리핀 그룹방 주소 입력" -->
         <a href="https://t.me/laosecogirl/3" target="_blank" class="floating-btn phil-btn">
-            <img src="telegram_icon.png" class="btn-icon" alt="텔레그램"><span class="icon-text">필리핀 문의</span>
+            <img src="https://wikimedia.org" class="btn-icon" alt="Telegram"><span class="icon-text">필리핀 문의</span>
         </a>
     </div>
 </body>
 </html>
-
